@@ -10,7 +10,7 @@ export default function Login({ onLogin }) {
     e.preventDefault();
     setErr("");
     try {
-      const res = await api.post("/auth.login", { email, password });
+      const res = await api.post("/auth/login", { email, password });
       onLogin(res.data.user);
     } catch (error) {
       setErr(error?.response?.data?.message || `Login failed`);

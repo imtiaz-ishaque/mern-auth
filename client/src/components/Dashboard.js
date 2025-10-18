@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 import api from "../services/api";
-import { set } from "mongoose";
 
 export default function Dashboard() {
   const [msg, setMsg] = useState("");
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await api.get("/protected/me");
+        const res = await api.get("/me");
         setMsg(JSON.stringify(res.data));
       } catch (e) {
         setMsg("Not authorized");

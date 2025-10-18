@@ -19,7 +19,7 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
-app.use(protected);
+app.use('/api',protected);
 
 mongoose
   .connect(process.env.MONGO_URI)
