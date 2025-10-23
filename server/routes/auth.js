@@ -5,6 +5,8 @@ const router = express.Router();
 
 const User = require("../models/User");
 
+const auth = require("../middleware/auth");
+
 //reister
 
 router.post("/register", async (req, res) => {
@@ -66,6 +68,10 @@ router.post("/login", async (req, res) => {
 router.post("/logout", async (req, res) => {
   res.clearCookie("token", { httpOnly: true, sameSite: "lax" });
   res.json({ message: "Logged out" });
+});
+
+router.get("/check", auth, async (req, res) => {
+  res.json({ success: true, user: req.user });
 });
 
 module.exports = router;
